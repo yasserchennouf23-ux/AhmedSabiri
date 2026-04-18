@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmed Sabiri | Panel </title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Rajdhani:wght@500;600;700&display=swap');
+
+        :root {
+            --kick: #53fc18;
+            --discord: #5865F2;
+            --yt: #ff0000;
+            --insta: #E1306C;
+            --x: #ffffff;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.08);
+        }
+
+        body, html {
+            margin: 0; padding: 0; width: 100%; height: 100%;
+            background: #000; color: white;
+            font-family: 'Rajdhani', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* --- THE BANNER --- */
+        .banner-wrapper {
+            width: 100%; height: 300px; position: relative;
+            background: url('https://yt3.googleusercontent.com/ffw4hINpIOe5Eub31LI16TaCPB9Y8Cxz2RhPyFsClqwbJKB78s5TTrQdcehZcZlHukwrdpF_Sg=w1707-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj') no-repeat center center;
+            background-size: cover; border-bottom: 1px solid var(--border);
+        }
+        
+        .banner-wrapper::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(to bottom, transparent 20%, #000 100%);
+        }
+
+        .bg-container { position: fixed; inset: 0; z-index: -2; overflow: hidden; }
+        .bg-gif {
+            position: absolute; inset: 0;
+            background-image: url('https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJpZzRreXp4ZzRreXp4ZzRreXp4ZzRreXp4ZzRreXp4ZzRreXp4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZEMmY3Q9Zw/3o7TKVUn7iM8FMEU24/giphy.gif');
+            background-size: cover; filter: brightness(0.1) blur(80px); opacity: 0.4;
+        }
+
+        .main-wrapper {
+            position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center;
+            padding: 0 20px 80px; max-width: 900px; margin: -80px auto 0;
+        }
+
+        /* Branding Section */
+        .branding { text-align: center; margin-bottom: 45px; }
+        .avatar-container {
+            position: relative; padding: 6px; border-radius: 45px; border: 2px solid var(--kick);
+            background: #000; display: inline-block; margin-bottom: 25px;
+            box-shadow: 0 0 35px rgba(83, 252, 24, 0.4);
+        }
+        .avatar { width: 130px; height: 130px; border-radius: 38px; display: block; object-fit: cover; }
+
+        .name-logo-wrap {
+            display: flex; align-items: center; justify-content: center; gap: 18px; margin-bottom: 5px;
+        }
+        .side-logo {
+            width: 48px; height: 48px; object-fit: contain;
+        }
+        h1 { 
+            font-family: 'Syncopate', sans-serif; font-size: 2rem; letter-spacing: 12px; margin: 0;
+        }
+
+        /* --- BENTO GRID WITH 5 BUTTONS --- */
+        .social-grid {
+            display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px;
+            width: 100%; max-width: 650px; margin: 40px 0;
+        }
+        .social-item {
+            height: 90px; background: var(--glass); border-radius: 28px;
+            border: 1px solid var(--border); backdrop-filter: blur(25px);
+            display: flex; align-items: center; justify-content: center;
+            transition: 0.5s cubic-bezier(0.2, 1, 0.2, 1);
+        }
+        .social-item img { width: 38px; height: 38px; opacity: 0.7; transition: 0.4s; }
+
+        /* Custom YT Width */
+        .t-yt img { width: 65px; height: auto; } /* Kbert l-3ard dial YouTube */
+
+        /* Hovers */
+        .t-kick:hover { border-color: var(--kick); box-shadow: 0 0 30px rgba(83, 252, 24, 0.5); transform: translateY(-10px); }
+        .t-discord:hover { border-color: var(--discord); box-shadow: 0 0 30px rgba(88, 101, 242, 0.5); transform: translateY(-10px); }
+        .t-yt:hover { border-color: var(--yt); box-shadow: 0 0 30px rgba(255, 0, 0, 0.5); transform: translateY(-10px); }
+        .t-insta:hover { border-color: var(--insta); box-shadow: 0 0 30px rgba(225, 48, 108, 0.5); transform: translateY(-10px); }
+        .t-x:hover { border-color: var(--x); box-shadow: 0 0 30px rgba(255, 255, 255, 0.3); transform: translateY(-10px); }
+        
+        .social-item:hover img { opacity: 1; transform: scale(1.1); }
+
+        /* Watch Stage */
+        .live-stage {
+            width: 100%; background: var(--glass); border-radius: 50px;
+            padding: 50px; border: 1px solid var(--border); backdrop-filter: blur(40px);
+            text-align: center;
+        }
+        .btn-glow {
+            background: var(--kick); color: #000; border: none; padding: 22px 65px;
+            border-radius: 22px; font-weight: 900; font-size: 1.25rem; cursor: pointer;
+            letter-spacing: 5px; transition: 0.4s; text-transform: uppercase;
+            box-shadow: 0 0 35px rgba(83, 252, 24, 0.6);
+        }
+        .btn-glow:hover { transform: scale(1.05); box-shadow: 0 0 55px rgba(83, 252, 24, 0.8); }
+
+        .player-frame { display: none; width: 100%; aspect-ratio: 16 / 9; margin-top: 40px; border-radius: 35px; overflow: hidden; border: 1px solid var(--border); }
+        iframe { width: 100%; height: 100%; border: none; }
+
+        footer { margin-top: 100px; font-size: 0.7rem; opacity: 0.2; letter-spacing: 12px; font-weight: 800; }
+
+        @media (max-width: 700px) {
+            .social-grid { grid-template-columns: repeat(3, 1fr); }
+            h1 { font-size: 1.4rem; letter-spacing: 6px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-container"><div class="bg-gif"></div></div>
+    <header class="banner-wrapper"></header>
+
+    <div class="main-wrapper">
+        <div class="branding">
+            <div class="avatar-container">
+                <img src="https://files.kick.com/images/user/1874702/profile_image/conversion/d50ea427-82b6-455f-a006-236bb409631d-fullsize.webp" class="avatar">
+            </div>
+            
+            <div class="name-logo-wrap">
+                <h1>AHMED SABIRI</h1>
+            </div>
+            
+            <p style="margin-top: 12px; font-size: 0.8rem; opacity: 0.5; letter-spacing: 7px; font-weight: 700;"> CONTENT CREATOR & STREAMER</p>
+        </div>
+
+        <div class="social-grid">
+            <a href="https://kick.com/ahmedsabiri" class="social-item t-kick" target="_blank">
+                <img src="https://static.vecteezy.com/system/resources/previews/075/195/432/non_2x/kick-live-streaming-logo-app-icon-transparent-background-free-png.png">
+            </a>
+            <a href="https://discord.gg/cMJtFmcHPe" class="social-item t-discord" target="_blank">
+                <img src="https://static.vecteezy.com/system/resources/thumbnails/018/930/718/small/discord-logo-discord-icon-transparent-free-png.png">
+            </a>
+            <a href="https://www.youtube.com/@AhmedSabirii" class="social-item t-yt" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png">
+            </a>
+            <a href="https://www.instagram.com/ahmedsaabiri/" class="social-item t-insta" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png">
+            </a>
+            <a href="https://twitter.com/ahmedsaabiri" class="social-item t-x" target="_blank">
+                <img src="https://img.freepik.com/free-vector/new-2023-twitter-logo-x-icon-design_1017-45418.jpg?w=360">
+            </a>
+        </div>
+
+        <div class="live-stage">
+            <div id="cta-view">
+                <button class="btn-glow" onclick="showLive()">WATCH KICK STREAM </button>
+            </div>
+            <div class="player-frame" id="live-player">
+                <iframe src="https://player.kick.com/ahmedsabiri" allowfullscreen="true"></iframe>
+            </div>
+        </div>
+
+        <footer>© 2026 DESIGNED BY Ahmed Sabiri Team</footer>
+    </div>
+
+    <script>
+        function showLive() {
+            document.getElementById('live-player').style.display = 'block';
+            document.getElementById('cta-view').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
